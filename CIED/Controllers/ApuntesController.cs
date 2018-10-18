@@ -33,7 +33,7 @@ namespace CIED.Controllers
 
         private  void createLists()
         {
-            //Llenamos los combos
+            //Llenamos los combos de las pantallas
             var liTipoAunte =  new CreateListTipoApunte();
             var liEmpresa = new CreateListEmpresa();
             var liSlot = new CreateListSlot();
