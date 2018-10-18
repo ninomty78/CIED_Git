@@ -1,0 +1,68 @@
+﻿@model CIED.Models.Apunte
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+    @{
+        ViewData["Title"] = "Agregar";
+    }
+
+    <h2>Agregar</h2>
+
+    <h4>Apunte</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Descripcion" class="control-label"></label>
+                    <input asp-for="Descripcion" class="form-control" />
+                    <span asp-validation-for="Descripcion" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Importe" class="control-label"></label>
+                    <input asp-for="Importe" class="form-control" />
+                    <span asp-validation-for="Importe" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Fecha" class="control-label"></label>
+                    <input asp-for="Fecha" class="form-control" />
+                    <span asp-validation-for="Fecha" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            <input asp-for="Estatus" /> @Html.DisplayNameFor(model => model.Estatus)
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    <label asp-for="TipoApunteID" class="control-label"></label>
+                    <select asp-for="TipoApunteID" asp-items="@(new SelectList(ViewBag.listofitemsTipoApunte,"TipoApunteID","Descripcion"))"> </select>
+                    <span asp-validation-for="TipoApunteID" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+
+                    <label asp-for="EmpresaID" class="control-label"></label>
+                    <select asp-for="EmpresaID" asp-items="@(new SelectList(ViewBag.listofitemsEmpresa,"EmpresaID","Descripcion"))"> </select>
+                    <span asp-validation-for="EmpresaID" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+
+                    <label asp-for="SlotID" class="control-label"></label>
+                    <select asp-for="SlotID" asp-items="@(new SelectList(ViewBag.listofitemsSlot,"SlotID","Descripcion"))"> </select>
+                    <span asp-validation-for="SlotID" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Agregar" class="btn btn-default" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Regresar</a>
+    </div>
+    </main>
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

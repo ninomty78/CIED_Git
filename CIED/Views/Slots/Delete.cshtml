@@ -1,0 +1,52 @@
+﻿@model CIED.Models.Slot
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+    @{
+        ViewData["Title"] = "Eliminar";
+    }
+
+    <h2>Eliminar</h2>
+
+    <h3>Estás seguro que deseas elminarlo?</h3>
+    <div>
+        <h4>Slot</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Descripcion)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Importe)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Importe)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Fecha)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Identificador)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Identificador)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Estatus)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Estatus)
+            </dd>
+        </dl>
+
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="SlotID" />
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            <a asp-action="Index">Regresar</a>
+        </form>
+    </div>
+    </main>
