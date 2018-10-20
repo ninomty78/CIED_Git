@@ -6,14 +6,14 @@ using CIED.Controllers.Interfaces;
 
 namespace CIED.Controllers.Util
 {
-    class CreateListTipoApunte: ICreateList
+    public class CreateListCategoria : ICreateList
     {
         public void listOfItems(CIEDContext context, Controller controller)
         {
-            List<TipoApunte> liTipoApunte = new List<TipoApunte>();
+            List<Categoria> liCategoria = new List<Categoria>();
 
-            liTipoApunte = context.TipoApunte.ToList();
-            controller.ViewBag.listofitemsTipoApunte = liTipoApunte;
+            liCategoria = context.Categoria.ToList();
+            controller.ViewBag.listofitemsCategoria = liCategoria;
         }
     }
 }

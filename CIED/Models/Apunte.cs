@@ -13,7 +13,7 @@ namespace CIED.Models
         [Display(Name = "Descripción")]
         public string Descripcion { get; set; }
         [Required(ErrorMessage = "El importe es requerido.")]
-        public double Importe { get; set; }
+        public decimal Importe { get; set; }
         [Required(ErrorMessage = "La fecha es requerida.")]
         public DateTime Fecha { get; set; }
         public Boolean Estatus { get; set; }
@@ -29,5 +29,9 @@ namespace CIED.Models
         [Display(Name = "Slot")]
         public int SlotID { get; set; }
         public virtual Slot Slot { get; set; }
+        [Required(ErrorMessage = "La categoria es requerida.")]
+        [Display(Name = "Categoria")]
+        public int CategoriaID { get; set; }
+        public virtual Categoria Categoria { get; set; }
     }
 }

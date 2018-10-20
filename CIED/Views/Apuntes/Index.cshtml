@@ -31,33 +31,37 @@
                     <th>@Html.DisplayNameFor(model => model.Fecha)</th>
                     <th>@Html.DisplayNameFor(model => model.Estatus)</th>
                     <th>@Html.DisplayNameFor(model => model.TipoApunteID)</th>
+                    <th>@Html.DisplayNameFor(model => model.CategoriaID)</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Descripcion)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Importe)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Fecha)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Estatus)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.TipoApunte.Descripcion)
-                        </td>
-                        <td>
-                            <a asp-action="Edit" asp-route-id="@item.ApunteID">Editar</a> |
-                            <a asp-action="Details" asp-route-id="@item.ApunteID">Detalle</a> |
-                            <a asp-action="Delete" asp-route-id="@item.ApunteID">Eliminar</a>
-                        </td>
-                    </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descripcion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Importe)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fecha)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Estatus)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TipoApunte.Descripcion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Categoria.Descripcion)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.ApunteID">Editar</a> |
+                        <a asp-action="Details" asp-route-id="@item.ApunteID">Detalle</a> |
+                        <a asp-action="Delete" asp-route-id="@item.ApunteID">Eliminar</a>
+                    </td>
+                </tr>
                 }
             </tbody>
         </table>

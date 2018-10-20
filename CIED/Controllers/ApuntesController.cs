@@ -37,9 +37,11 @@ namespace CIED.Controllers
             var liTipoAunte =  new CreateListTipoApunte();
             var liEmpresa = new CreateListEmpresa();
             var liSlot = new CreateListSlot();
+            var liCategoria = new CreateListCategoria();
             createList(liTipoAunte);
             createList(liEmpresa);
             createList(liSlot);
+            createList(liCategoria);
         }
 
    
@@ -144,7 +146,7 @@ namespace CIED.Controllers
             }
 
             
-            return View(await _context.Apunte.Include("TipoApunte").Include("Empresa").ToListAsync());
+            return View(await _context.Apunte.Include("TipoApunte").Include("Empresa").Include("Categoria").ToListAsync());
         }
 
         // GET: Apuntes/Details/5
@@ -185,7 +187,7 @@ namespace CIED.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ApunteID,Descripcion,Importe,Fecha,Estatus,TipoApunteID,EmpresaID,SlotID")] Apunte apunte)
+        public async Task<IActionResult> Create([Bind("ApunteID,Descripcion,Importe,Fecha,Estatus,TipoApunteID,EmpresaID,SlotID,CategoriaID")] Apunte apunte)
         {
             if (ModelState.IsValid)
             {
@@ -221,7 +223,7 @@ namespace CIED.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ApunteID,Descripcion,Importe,Fecha,Estatus,TipoApunteID")] Apunte apunte)
+        public async Task<IActionResult> Edit(int id, [Bind("ApunteID,Descripcion,Importe,Fecha,Estatus,TipoApunteID,EmpresaID,SlotID,CategoriaID")] Apunte apunte)
         {
             if (id != apunte.ApunteID)
             {

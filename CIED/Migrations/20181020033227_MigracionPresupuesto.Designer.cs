@@ -4,14 +4,16 @@ using CIED.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CIED.Migrations
 {
     [DbContext(typeof(CIEDContext))]
-    partial class CIEDContextModelSnapshot : ModelSnapshot
+    [Migration("20181020033227_MigracionPresupuesto")]
+    partial class MigracionPresupuesto
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -90,45 +92,6 @@ namespace CIED.Migrations
                     b.ToTable("Empresa");
                 });
 
-            modelBuilder.Entity("CIED.Models.Presupuesto", b =>
-                {
-                    b.Property<int>("PresupuestoID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("Anio");
-
-                    b.Property<string>("Descripcion")
-                        .IsRequired()
-                        .HasMaxLength(250);
-
-                    b.HasKey("PresupuestoID");
-
-                    b.ToTable("Presupuesto");
-                });
-
-            modelBuilder.Entity("CIED.Models.PresupuestoDetalle", b =>
-                {
-                    b.Property<int>("PresupuestoDetalleID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("CategoriaID");
-
-                    b.Property<decimal>("Partida");
-
-                    b.Property<int>("PresupuestoID");
-
-                    b.HasKey("PresupuestoDetalleID");
-
-                    b.HasIndex("CategoriaID");
-
-                    b.HasIndex("PresupuestoID")
-                        .IsUnique();
-
-                    b.ToTable("PresupuestoDetalle");
-                });
-
             modelBuilder.Entity("CIED.Models.Slot", b =>
                 {
                     b.Property<int>("SlotID")
@@ -191,19 +154,6 @@ namespace CIED.Migrations
                     b.HasOne("CIED.Models.TipoApunte", "TipoApunte")
                         .WithMany()
                         .HasForeignKey("TipoApunteID")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("CIED.Models.PresupuestoDetalle", b =>
-                {
-                    b.HasOne("CIED.Models.Categoria", "Categoria")
-                        .WithMany()
-                        .HasForeignKey("CategoriaID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("CIED.Models.Presupuesto", "Presupuesto")
-                        .WithOne("PresupuestoDetalle")
-                        .HasForeignKey("CIED.Models.PresupuestoDetalle", "PresupuestoID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

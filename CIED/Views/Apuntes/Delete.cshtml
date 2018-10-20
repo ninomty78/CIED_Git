@@ -41,6 +41,24 @@
             <dd>
                 @Html.DisplayFor(model => model.TipoApunte.Descripcion)
             </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.EmpresaID)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Empresa.Descripcion)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.SlotID)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Slot.Descripcion)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.CategoriaID)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Categoria.Descripcion)
+            </dd>
         </dl>
 
         <form asp-action="Delete">

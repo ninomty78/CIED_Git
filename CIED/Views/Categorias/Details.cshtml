@@ -1,0 +1,31 @@
+﻿@model CIED.Models.Categoria
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+    @{
+        ViewData["Title"] = "Detalle";
+    }
+
+    <h2>Detalle</h2>
+
+    <div>
+        <h4>Categorias</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Descripcion)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Estatus)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Estatus)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.CategoriaID">Edit</a> |
+        <a asp-action="Index">Regresar</a>
+    </div>
+   </main>

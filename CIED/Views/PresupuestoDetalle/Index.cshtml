@@ -1,0 +1,49 @@
+﻿@model IEnumerable<CIED.Models.PresupuestoDetalle>
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+    @{
+        ViewData["Title"] = "Presupuestos Detalle";
+    }
+
+    <h2>Presupuestos Detalle</h2>
+
+    <p>
+        <a asp-action="Create">Agregar</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Presupuesto)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Categoria)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Partida)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Presupuesto.Descripcion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Categoria.Descripcion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Partida)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.PresupuestoDetalleID">Editar</a> |
+                        <a asp-action="Details" asp-route-id="@item.PresupuestoDetalleID">Detalle</a> |
+                        <a asp-action="Delete" asp-route-id="@item.PresupuestoDetalleID">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    </main>

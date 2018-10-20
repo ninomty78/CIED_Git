@@ -41,6 +41,21 @@
                     <span asp-validation-for="TipoApunteID" class="text-danger"></span>
                 </div>
                 <div class="form-group">
+                    <label asp-for="EmpresaID" class="control-label"></label>
+                    <select asp-for="EmpresaID" asp-items="@(new SelectList(ViewBag.listofitemsEmpresa,"EmpresaID","Descripcion"))"> </select>
+                    <span asp-validation-for="EmpresaID" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SlotID" class="control-label"></label>
+                    <select asp-for="SlotID" asp-items="@(new SelectList(ViewBag.listofitemsSlot,"SlotID","Descripcion"))"> </select>
+                    <span asp-validation-for="SlotID" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CategoriaID" class="control-label"></label>
+                    <select asp-for="CategoriaID" asp-items="@(new SelectList(ViewBag.listofitemsCategoria,"CategoriaID","Descripcion"))"> </select>
+                    <span asp-validation-for="CategoriaID" class="text-danger"></span>
+                </div>
+                <div class="form-group">
                     <input type="submit" value="Guardar" class="btn btn-default" />
                 </div>
             </form>
