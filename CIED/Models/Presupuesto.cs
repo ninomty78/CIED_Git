@@ -15,6 +15,6 @@ namespace CIED.Models
         public string Descripcion { get; set; }       
         [Required(ErrorMessage = "El Año es requerido.")]
         public int Anio { get; set; }
-        public virtual PresupuestoDetalle PresupuestoDetalle { get; set; }
+        public virtual List<PresupuestoDetalle> PresupuestoDetalle { get; set; }
     }
 }

@@ -4,14 +4,16 @@ using CIED.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CIED.Migrations
 {
     [DbContext(typeof(CIEDContext))]
-    partial class CIEDContextModelSnapshot : ModelSnapshot
+    [Migration("20181020235443_MigacionesTablasPresupuestos")]
+    partial class MigacionesTablasPresupuestos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

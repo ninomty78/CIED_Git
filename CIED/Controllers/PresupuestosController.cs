@@ -32,7 +32,7 @@ namespace CIED.Controllers
                 return NotFound();
             }
 
-            var presupuesto = await _context.Presupuesto
+            var presupuesto = await _context.Presupuesto.Include("PresupuestoDetalle.Categoria")
                 .FirstOrDefaultAsync(m => m.PresupuestoID == id);
             if (presupuesto == null)
             {

@@ -1,9 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-
 namespace CIED.Migrations
 {
-    public partial class MigracionesPresupustoFinal : Migration
+    public partial class MigacionesTablasPresupuestos : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

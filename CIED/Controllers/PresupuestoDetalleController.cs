@@ -23,6 +23,7 @@ namespace CIED.Controllers
         {
             var cIEDContext = _context.PresupuestoDetalle.Include(p => p.Categoria).Include(p => p.Presupuesto);
             return View(await cIEDContext.ToListAsync());
+            
         }
 
         // GET: PresupuestoDetalle/Details/5
@@ -46,10 +47,15 @@ namespace CIED.Controllers
         }
 
         // GET: PresupuestoDetalle/Create
-        public IActionResult Create()
+        public IActionResult Create(int? id)
         {
+            if (id == null)
+            {
+                return NotFound();
+            }
             ViewData["CategoriaID"] = new SelectList(_context.Categoria, "CategoriaID", "Descripcion");
             ViewData["PresupuestoID"] = new SelectList(_context.Presupuesto, "PresupuestoID", "Descripcion");
+            ViewBag.tmpPresupuestoID = id;
             return View();
         }
 
@@ -64,7 +70,7 @@ namespace CIED.Controllers
             {
                 _context.Add(presupuestoDetalle);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details","Presupuestos",new {id= presupuestoDetalle.PresupuestoID});
             }
             ViewData["CategoriaID"] = new SelectList(_context.Categoria, "CategoriaID", "Descripcion", presupuestoDetalle.CategoriaID);
             ViewData["PresupuestoID"] = new SelectList(_context.Presupuesto, "PresupuestoID", "Descripcion", presupuestoDetalle.PresupuestoID);
