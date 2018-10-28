@@ -37,22 +37,22 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="TipoApunteID" class="control-label"></label>
-                    <select asp-for="TipoApunteID" asp-items="@(new SelectList(ViewBag.listofitemsTipoApunte,"TipoApunteID","Descripcion"))"> </select>
+                    <select asp-for="TipoApunteID" class="form-control" asp-items="ViewBag.TipoApunteID"></select>
                     <span asp-validation-for="TipoApunteID" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="EmpresaID" class="control-label"></label>
-                    <select asp-for="EmpresaID" asp-items="@(new SelectList(ViewBag.listofitemsEmpresa,"EmpresaID","Descripcion"))"> </select>
+                    <select asp-for="EmpresaID" class="form-control" asp-items="ViewBag.EmpresaID"></select>
                     <span asp-validation-for="EmpresaID" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="SlotID" class="control-label"></label>
-                    <select asp-for="SlotID" asp-items="@(new SelectList(ViewBag.listofitemsSlot,"SlotID","Descripcion"))"> </select>
+                    <select asp-for="SlotID" class="form-control" asp-items="ViewBag.SlotID"></select>
                     <span asp-validation-for="SlotID" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="CategoriaID" class="control-label"></label>
-                    <select asp-for="CategoriaID" asp-items="@(new SelectList(ViewBag.listofitemsCategoria,"CategoriaID","Descripcion"))"> </select>
+                    <select asp-for="CategoriaID" class="form-control" asp-items="ViewBag.CategoriaID"></select>
                     <span asp-validation-for="CategoriaID" class="text-danger"></span>
                 </div>
                 <div class="form-group">

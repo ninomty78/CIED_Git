@@ -18,5 +18,9 @@ namespace CIED.Models
         public virtual Categoria Categoria { get; set; }
         [Required(ErrorMessage = "La partida es requerida.")]
         public decimal Partida { get; set; }
+        public decimal Real { get; set; }
+        public decimal CantidadRestante { get; set; }
+        public decimal PorcentajeRestante { get; set; }
+       
     }
 }

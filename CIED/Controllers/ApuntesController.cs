@@ -22,31 +22,7 @@ namespace CIED.Controllers
         {
             _context = context;
         }
-
-      
-
-        private void createList(ICreateList li)
-        {
-            var list = new CreateList(li);
-            list.LoadList(_context, this);           
-        }
-
-        private  void createLists()
-        {
-            //Llenamos los combos de las pantallas
-            var liTipoAunte =  new CreateListTipoApunte();
-            var liEmpresa = new CreateListEmpresa();
-            var liSlot = new CreateListSlot();
-            var liCategoria = new CreateListCategoria();
-            createList(liTipoAunte);
-            createList(liEmpresa);
-            createList(liSlot);
-            createList(liCategoria);
-        }
-
-   
-
-
+        
         // GET: Apuntes
         public async Task<IActionResult> Index()
         {
@@ -158,6 +134,10 @@ namespace CIED.Controllers
             }
 
             var apunte = await _context.Apunte
+                .Include(p => p.Categoria)
+                .Include(p => p.Slot)
+                .Include(p => p.Empresa)
+                .Include(p => p.TipoApunte)
                 .FirstOrDefaultAsync(m => m.ApunteID == id);
             if (apunte == null)
             {
@@ -165,20 +145,23 @@ namespace CIED.Controllers
             }
 
             
-            createLists();
-
+            
             return View(apunte);
         }
 
         // GET: Apuntes/Create
         public IActionResult Create()
-        { 
+        {
+
+            ViewData["TipoApunteID"] = new SelectList(_context.TipoApunte, "TipoApunteID", "Descripcion");
+            ViewData["EmpresaID"] = new SelectList(_context.Empresa, "EmpresaID", "Descripcion");
+            ViewData["SlotID"] = new SelectList(_context.Slot, "SlotID", "Descripcion");
+            ViewData["CategoriaID"] = new SelectList(_context.Categoria, "CategoriaID", "Descripcion");
 
             ViewBag.ActivoInicio="";
             ViewBag.ActivoAgregar="active";
 
-            createLists();
-
+            
             return View();
         }
 
@@ -195,6 +178,11 @@ namespace CIED.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["TipoApunteID"] = new SelectList(_context.TipoApunte, "TipoApunteID", "Descripcion");
+            ViewData["EmpresaID"] = new SelectList(_context.Empresa, "EmpresaID", "Descripcion");
+            ViewData["SlotID"] = new SelectList(_context.Slot, "SlotID", "Descripcion");
+            ViewData["CategoriaID"] = new SelectList(_context.Categoria, "CategoriaID", "Descripcion");
+
             return View(apunte);
         }
 
@@ -212,9 +200,12 @@ namespace CIED.Controllers
                 return NotFound();
             }
 
+            ViewData["TipoApunteID"] = new SelectList(_context.TipoApunte, "TipoApunteID", "Descripcion");
+            ViewData["EmpresaID"] = new SelectList(_context.Empresa, "EmpresaID", "Descripcion");
+            ViewData["SlotID"] = new SelectList(_context.Slot, "SlotID", "Descripcion");
+            ViewData["CategoriaID"] = new SelectList(_context.Categoria, "CategoriaID", "Descripcion");
 
-            createLists();
-
+            
             return View(apunte);
         }
 
@@ -250,6 +241,11 @@ namespace CIED.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["TipoApunteID"] = new SelectList(_context.TipoApunte, "TipoApunteID", "Descripcion");
+            ViewData["EmpresaID"] = new SelectList(_context.Empresa, "EmpresaID", "Descripcion");
+            ViewData["SlotID"] = new SelectList(_context.Slot, "SlotID", "Descripcion");
+            ViewData["CategoriaID"] = new SelectList(_context.Categoria, "CategoriaID", "Descripcion");
+
             return View(apunte);
         }
 
@@ -262,14 +258,17 @@ namespace CIED.Controllers
             }
 
             var apunte = await _context.Apunte
+                .Include(p => p.Categoria)
+                .Include(p => p.Slot)
+                .Include(p => p.Empresa)
+                .Include(p => p.TipoApunte)
                 .FirstOrDefaultAsync(m => m.ApunteID == id);
             if (apunte == null)
             {
                 return NotFound();
             }
 
-            createLists();
-
+            
             return View(apunte);
         }
 

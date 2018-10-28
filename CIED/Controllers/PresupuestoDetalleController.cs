@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CIED.Models;
+using System.Data.SqlClient;
 
 namespace CIED.Controllers
 {
@@ -55,7 +56,8 @@ namespace CIED.Controllers
             }
             ViewData["CategoriaID"] = new SelectList(_context.Categoria, "CategoriaID", "Descripcion");
             ViewData["PresupuestoID"] = new SelectList(_context.Presupuesto, "PresupuestoID", "Descripcion");
-            ViewBag.tmpPresupuestoID = id;
+            ViewBag.tmpPresupuestoID = id;          
+
             return View();
         }
 
@@ -70,10 +72,15 @@ namespace CIED.Controllers
             {
                 _context.Add(presupuestoDetalle);
                 await _context.SaveChangesAsync();
+             
+
                 return RedirectToAction("Details","Presupuestos",new {id= presupuestoDetalle.PresupuestoID});
             }
             ViewData["CategoriaID"] = new SelectList(_context.Categoria, "CategoriaID", "Descripcion", presupuestoDetalle.CategoriaID);
             ViewData["PresupuestoID"] = new SelectList(_context.Presupuesto, "PresupuestoID", "Descripcion", presupuestoDetalle.PresupuestoID);
+
+          
+
             return View(presupuestoDetalle);
         }
 

@@ -28,37 +28,47 @@
     <p>
         <a asp-controller="PresupuestoDetalle" asp-action="Create" asp-route-id="@Model.PresupuestoID">Agregar Partida</a>
     </p>
-    <div>
-        <table class="table">
+    <div class="table-responsive">
+        <table class="table table-striped table-sm">
             <thead>
                 <tr>
-
                     <th>
                         Categoria
                     </th>
                     <th>
-                        Partida
+                        Presupuesto
                     </th>
-                    <th></th>
+                    <th>
+                        Gastado
+                    </th>
+                    <th>
+                        Cantidad Restante
+                    </th>
+                    <th>
+                        Porcentaje Restante
+                    </th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var item in Model.PresupuestoDetalle)
                 {
-                    <tr>
+                <tr>
 
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Categoria.Descripcion)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Partida)
-                        </td>
-                        <td>
-                            <a asp-controller="PresupuestoDetalle" asp-action="Edit" asp-route-id="@item.PresupuestoDetalleID">Editar</a> |
-                            <a asp-action="Details" asp-route-id="@item.PresupuestoDetalleID">Detalle</a> |
-                            <a asp-action="Delete" asp-route-id="@item.PresupuestoDetalleID">Eliminar</a>
-                        </td>
-                    </tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Categoria.Descripcion)
+                    </td>
+                    <td> @Html.DisplayFor(modelItem => item.Partida)</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Real)
+                    </td>
+                    <td> @Html.DisplayFor(modelItem => item.CantidadRestante)</td>
+                    <td> @Html.DisplayFor(modelItem => item.PorcentajeRestante)</td>
+                    <td>
+                        <a asp-controller="PresupuestoDetalle" asp-action="Edit" asp-route-id="@item.PresupuestoDetalleID">Editar</a> |
+                        <a asp-action="Details" asp-route-id="@item.PresupuestoDetalleID">Detalle</a> |
+                        <a asp-action="Delete" asp-route-id="@item.PresupuestoDetalleID">Eliminar</a>
+                    </td>
+                </tr>
                 }
             </tbody>
         </table>
